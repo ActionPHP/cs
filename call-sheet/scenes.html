@@ -81,9 +81,12 @@
 				<button class="btn" id="add-scene-button" data-toggle="modal" data-target="#scene-details-form-template"><i class="icon-plus" ></i> Add scene</button>
 			</div>		
 
+			<div>
+			 <ul id="call-sheet-scene-list" class="nav nav-tabs nav-stacked"></ul>
+			</div>
 
 		<div class="row offset1">
-					
+							
 
 					<input type="hidden" name="call_sheet_id" value="" />
 				
@@ -108,7 +111,7 @@
 				<p>
 				<strong>Slug line: </strong>
 
-				<select id="scene_place" class="span1">
+				<select id="slug_place" style="width: 85px;">
 					<option value="EXT">EXT</option>				
 					<option value="INT">INT</option>
 					<option value="EXT/INT">EXT/INT</option>				
@@ -117,7 +120,7 @@
 					<strong>.</strong>
 						<input type="text" id="slug" style="width: 250px;" />
 					<strong>.</strong>
-						<select id="day_night"  class="span1">
+						<select id="day_night" style="width: 85px;">
 							<option value="DAY" >DAY</option>
 							<option value="NIGHT" >NIGHT</option>
 					</select>
@@ -137,6 +140,12 @@
 					<input type="text" id="pages"  class="input-medium" />
 				</label>
 
+				<label>
+					<strong>Notes: </strong>:
+
+					<textarea id="notes" ></textarea>
+
+				</label>
 				
 				</div>
 				<div class="modal-footer">
@@ -149,7 +158,11 @@
 			
 		</script>
 
+		<script type="text/template" id="scene-item">
 
+			<a href="#" style="color: #000000;"><strong style="text-transform: uppercase;"><%= slug_place %>.<%= slug %>.<%= day_night %></strong> <%= description %> <button class="btn btn-mini btn-success offset1 add-cast-button"><i class="icon-star icon-white"></i> Add Cast</button></a> 
+
+		</script>
 
 
 		<script type="text/javascript" src="http://famefox.org/js/jquery.min.js"></script>
