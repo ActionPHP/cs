@@ -1,0 +1,194 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+
+		<title>FameFox - Supreme Call Sheets For Real Filmakers</title>
+
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/style.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap-responsive.min.css">
+	</head>
+	<body>
+		 <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                   
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="/">Home</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+		<div class="container-fluid">
+					<div class="container-fluid">
+								  <div class="row-fluid">
+								    <div class="span2 well" style="padding: 10px;">
+								      <!--Sidebar content-->
+								      <ul class="nav nav-list">
+								      	<li><a href="#/productions"><i class="icon-film" ></i> Productions</a></li>
+								      	<li><a href="#/cast"><i class="icon-star" ></i> Cast</a></li>
+								      	<li><a href="#/crew"><i class="icon-wrench" ></i> Crew</a>
+								      </ul>
+								    </div>
+								    <div class="span10">
+								      <!--Body content-->
+								      <div id="view-port">Loading...</div>
+								    </div>
+								  </div>
+								</div>
+					
+		</div>
+
+
+		<!-- Templates -->
+
+		<!-- Production -->
+
+		<script type="text/template" id="productions-main">
+
+			<div>
+
+				<div>
+				<form id="create-production-form" action="">
+					<input type="text" id="production-name" > <input type="submit" id="create-production" class="btn btn-primary" value="Create Production" />
+				</form>
+				</div>
+				<div>
+				
+				<div>
+
+					<ul id="production-list" class="nav nav-tabs nav-stacked"></ul>
+
+				</div>
+
+			</div>
+
+
+		</script>
+		
+		<script type="text/template" id="production-item" >
+		<a href="#/production/<%= id %>" ><%= name %></a>
+		</script>
+
+		<script type="text/template" id="production-view">
+		<h3 style="color: #333;" >"<%= name %>"</h3>
+		<h4><i class="icon-list"></i> Call Sheets</h4>
+		<span ><a href="#/production/<%= id %>/call-sheet" ><i class="icon-plus" ></i> Add call sheet</a></span>
+		
+		<ul id="production-call-sheet-list"  class="nav nav-pills nav-stacked"></ul>
+
+		<h4><i class="icon-star"></i> Cast</h4>
+
+		<ul id="production-cast-list" class="nav nav-pills nav-stacked" ></ul>
+
+		<h4><i class="icon-wrench" ></i> Crew</h4>
+
+		<ul id="production-crew-list" class="nav nav-pills nav-stacked" ></ul>
+
+		</script>
+		<!-- Cast -->
+		<script type="text/template" id=""></script>
+		<script type="text/template" id=""></script>
+
+		<!-- Character -->
+		<script type="text/template" id="production-character-item">#
+		<td><%= num %></td>
+		<td><%= name %></td>
+		<td><%= character_name %></td>
+		<td></td>
+		</script>
+		<script type="text/template" id=""></script>
+
+		<!-- Crew -->
+		<script type="text/template" id=""></script>
+		<script type="text/template" id=""></script>
+
+		<!-- Scene -->
+		<script type="text/template" id="scene-item">
+			<td><%= num %></td>
+			<td><%= slug_place %><%= slug %>			
+			<p><%= description %></p>
+			</td>
+			<td><%= day_night %></td>
+			<td><%= pages %></td>
+			<td><%= cast %></td>
+		</script>
+		
+		<script type="text/template" id=""></script>
+
+		<!-- Call Sheet -->
+		<script type="text/template" id="call-sheet-item">
+		<a href="#/call-sheet/<%= id %>" ><span style="color: #333"><strong>Call date:</strong> <%= call_date %> - </span> <%= name %> </a>
+		</script>
+
+		<script type="text/template" id="call-sheet">
+		<div>
+			<center>
+				<h2 class="text-center">Call Time: <span style="color: #333;"><%= call_time %></span></h2>
+				<h3 class="text-center">Call Date: <span style="color: #333;"><%= call_date %></span></h3>
+			</center>
+		</div>
+
+		<div class="row">
+			<div class="span5 offset1 " >
+				<p><strong>Meeting point: </strong> <%= meeting_point  %></p>
+				<p><strong>Contact: </strong><%=  contact %></p>
+				<p><strong>Location: </strong><%=  location %></p>
+			</div>
+			<div class="span6" >
+
+				<p><strong>Notes: </strong><%= notes  %></p>
+
+			</div>
+		</div>
+
+		<hr/>
+		<h4>Scenes</h4>
+
+		<table id="production-scene-table" class="table table-hover">
+			<thead>
+				<th>#</>
+					<th>Slug line</th>
+				<th>DAY/NIGHT</th>
+				<th>Pages</th>
+				<th>Cast</th>
+				<th></th>
+
+			</thead>
+		<tbody id="production-scene-list" ></tbody>
+			
+		</table>
+
+		<h4>Cast</h4>
+
+		<table id="production-cast-table" class="table table-hover tablesorter">
+			<thead>
+				<th>#</>
+				<th>Name</th>
+				<th>Character</th>
+				<th></th>
+
+			</thead>
+		<tbody id="production-cast-list" ></tbody>
+			
+		</table>
+
+		</script>
+
+
+
+		<script type="text/javascript" src="http://famefox.org/js/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/underscore.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/backbone-min.js"></script>
+		<script type="text/javascript" src="js/call-sheet-app.js"></script>
+	</body>
+</html>

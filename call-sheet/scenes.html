@@ -1,0 +1,162 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+
+		<title>FameFox - Supreme Call Sheets For Real Filmakers</title>
+
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/style.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap-responsive.min.css">
+		<style type="text/css">
+
+			.ff-clean-input {
+
+				border: none !important;
+				-webkit-box-shadow: none !important;
+				-moz-box-shadow: none !important;
+				box-shadow: none !important;
+
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                   
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="/">Home</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+		<div class="container-fluid">
+					<div class="container-fluid">
+								  <div class="row-fluid">
+								    <div class="span2 well" style="padding: 10px;">
+								      <!--Sidebar content-->
+								      <ul class="nav nav-list">
+								      	<li><a href="#/productions"><i class="icon-film" ></i> Productions</a></li>
+								      	<li><a href="#/cast"><i class="icon-star" ></i> Cast</a></li>
+								      	<li><a href="#/crew"><i class="icon-wrench" ></i> Crew</a>
+								      </ul>
+								    </div>
+								    <div class="span10">
+								    
+								    <!--Body content-->
+								    
+								    <ul id="call-sheet-nav-tabs" class="nav nav-tabs" >
+										<li>
+											<a href="#" >Details</a>
+										</li>
+										<li class="active">
+											<a href="#" >Scenes</a>
+										</li>
+										<li>
+											<a href="#" >Crew</a>
+										</li>
+									</ul>
+								    
+								      <div id="view-port">Loading...</div>
+								    </div>
+								  </div>
+								</div>
+					
+		</div>
+
+		<!-- Templates -->
+
+		<!-- Main Call Sheet -->
+
+		<script type="text/template" id="edit-scenes">
+		
+			<div>
+				<button class="btn" id="add-scene-button" data-toggle="modal" data-target="#scene-details-form-template"><i class="icon-plus" ></i> Add scene</button>
+			</div>		
+
+
+		<div class="row offset1">
+					
+
+					<input type="hidden" name="call_sheet_id" value="" />
+				
+				
+					
+			
+		</div>
+	
+		<div  id="scene-details-form-template"  class="modal hide fade">
+
+ 			<div class="modal-header">
+  				<h3>Scene Details</h3>
+  			</div>
+
+		<div class="modal-body">
+
+			<form id="scene-details-form" action="" >
+
+				<label>
+					<strong>Scene number: </strong> <input type="text" id="num"   class="input-small" /> 					
+				</label>
+				<p>
+				<strong>Slug line: </strong>
+
+				<select id="scene_place" class="span1">
+					<option value="EXT">EXT</option>				
+					<option value="INT">INT</option>
+					<option value="EXT/INT">EXT/INT</option>				
+					<option value="INT/EXT">INT/EXT</option>				
+				</select>
+					<strong>.</strong>
+						<input type="text" id="slug" style="width: 250px;" />
+					<strong>.</strong>
+						<select id="day_night"  class="span1">
+							<option value="DAY" >DAY</option>
+							<option value="NIGHT" >NIGHT</option>
+					</select>
+
+
+				</p>
+
+				<label>
+					<strong>Description</strong>:
+
+					<textarea id="description" ></textarea>
+
+				</label>
+
+				<label>
+					<strong>Pages: </strong>
+					<input type="text" id="pages"  class="input-medium" />
+				</label>
+
+				
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+				    <input type="submit" class="btn btn-primary" id="save-scene" value="Save changes"/>
+				  
+				</div>
+				</form>
+			</div>		
+			
+		</script>
+
+
+
+
+		<script type="text/javascript" src="http://famefox.org/js/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/underscore.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/backbone-min.js"></script>
+		<script type="text/javascript" src="js/creat-edit-scenes.js"></script>
+	</body>
+</html>
