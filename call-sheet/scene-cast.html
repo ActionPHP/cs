@@ -1,0 +1,134 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+
+		<title>FameFox - Supreme Call Sheets For Real Filmakers</title>
+
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/style.css">
+		<link rel="stylesheet" type="text/css" href="http://famefox.org/css/bootstrap-responsive.min.css">
+		<style type="text/css">
+
+			.ff-clean-input {
+
+				border: none !important;
+				-webkit-box-shadow: none !important;
+				-moz-box-shadow: none !important;
+				box-shadow: none !important;
+
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                   
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="/">Home</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+		<div class="container-fluid">
+					<div class="container-fluid">
+								  <div class="row-fluid">
+								    <div class="span2 well" style="padding: 10px;">
+								      <!--Sidebar content-->
+								      <ul class="nav nav-list">
+								      	<li><a href="#/productions"><i class="icon-film" ></i> Productions</a></li>
+								      	<li><a href="#/cast"><i class="icon-star" ></i> Cast</a></li>
+								      	<li><a href="#/crew"><i class="icon-wrench" ></i> Crew</a>
+								      </ul>
+								    </div>
+								    <div class="span10">
+								    
+								    <!--Body content-->
+								    
+								    <ul id="call-sheet-nav-tabs" class="nav nav-tabs" >
+										<li>
+											<a href="#" >Details</a>
+										</li>
+										<li class="active">
+											<a href="#" >Scenes</a>
+										</li>
+										<li>
+											<a href="#" >Crew</a>
+										</li>
+									</ul>
+								    
+								      <div id="view-port">Loading...</div>
+								    </div>
+								  </div>
+								</div>
+					
+		</div>
+
+		<style >
+
+			#available-cast-list li, #scene-cast li {
+
+				padding: 10px;
+				margin-top: -1px;
+				border: 1px #ccc dashed;
+
+			}
+
+		</style>
+		<!-- Templates -->
+		<script type="text/template" id="scene-cast-template">
+
+			 <div class="row offset1" >
+			 	<h4>Drop your cast here</h4>
+
+			 	<div class="span5" >
+			 		<ul class="span3 connectSortable unstyled" id="scene-cast" style="min-height: 30px; min-width: 300px;border: 1px #DCDCDC dashed; background-color: #F8F8FF;">
+
+
+			 		</ul>
+			 	</div>
+
+			 	<div class="span3" >
+			 	<h4>Select your cast:</h4>
+
+			 	<ul id="available-cast-list" class="unstyled connectSortable" style="min-height: 30px; min-width: 250px;border: 1px #CCCCCC dashed; background-color: #F8F8F8;">
+			 	<li><strong>Actor 1 </strong> as <em>Character 1</em></li> 
+			 	<li><strong>Actor 2	</strong> as <em>Character 2</em></li> 
+			 	<li><strong>Actor 3 </strong> as <em>Character 3</em></li> 
+			 	<li><strong>Actor 4 </strong> as <em>Character 4</em></li> 
+
+			 	</ul>
+			 	</div>
+
+
+
+			 </div>
+
+
+
+		</script>
+
+		<script type="text/template" id="character-item-template">
+			<strong><%= name %></strong> as <em><%= character_name %>
+		</script>
+		<!-- Main Call Sheet -->
+
+
+		<script type="text/javascript" src="http://famefox.org/js/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/underscore.js"></script>
+		<script type="text/javascript" src="http://famefox.org/js/backbone-min.js"></script>
+		<script type="text/javascript" src="js/scene-cast.js"></script>
+
+
+	</body>
+</html>
