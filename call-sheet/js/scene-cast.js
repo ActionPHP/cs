@@ -17,6 +17,7 @@ App.Models.SceneCast = Backbone.Collection.extend({
 
 });
 
+App.Models.Cast = Backbone.Model.extend({});
 App.Models.Character = Backbone.Model.extend({
 
 	
@@ -30,6 +31,7 @@ App.Views.SceneCast = Backbone.View.extend({
 
 	initialize: function(){
 		
+		this.el = '#scene-cast';
 		this.scene_id = 5;
 		this.render();
 		this.getScene();
@@ -50,7 +52,7 @@ App.Views.SceneCast = Backbone.View.extend({
 		var scene = new App.Models.Scene;
 
 		scene.url = '/SAPI/scene/' + this.scene_id;
-		that = this;
+		var that = this;
 		scene.fetch({
 
 			success: function(response) {
@@ -59,8 +61,9 @@ App.Views.SceneCast = Backbone.View.extend({
 				characters = the_scene.cast;
 
 				that.getCharacters(characters);
+				that.getCast(the_scene.production_id, characters);
 
-				
+
 			}
 
 		});
@@ -69,23 +72,45 @@ App.Views.SceneCast = Backbone.View.extend({
 
 	getCharacters: function (characters) {
 
+				var that = this;
+				console.log(this.el);
 				_.each(characters, function(character_id){
 
-						the_character = new App.Models.Character({ id: character_id});
+						var the_character = new App.Models.Character({ id: character_id});
 						the_character.url = '/SAPI/character/' + character_id;
 						the_character.fetch({
 
 							success: function (character) {
 								
-								characterItemView = new App.Views.CharacterItem;
+								var characterItemView = new App.Views.CharacterItem;
 
 								var view = characterItemView.render(character).el;
 
-								console.log(character.toJSON())
+								$(that.el).append(view);
+
+								console.log(view);
 							}
 						});
 				});
+	},
+
+	getCast: function(production_id, characters){
+
+			console.log(characters);
+		
+			productionCast = new App.Collections.ProductionCast;
+			productionCast.url = '/SAPI/production/cast/' + production_id;
+			productionCast.fetch({
+
+			success: function (cast) {
+				var  castList = new App.Views.ProductionCastList;
+				castList.collection = cast;
+				castList.render(characters);
 			}
+
+	});
+
+	}
 
 });
 
@@ -107,7 +132,79 @@ App.Views.CharacterItem = Backbone.View.extend({
 
 });
 
-App.Collections.ProductionCast = Backbone.Collection.extend({});
+App.Views.ProductionCastList = Backbone.View.extend({
+
+	el: '#available-cast-list',
+
+	initialize: function () {
+		
+		//this.el = '#available-cast-list';
+
+	},
+
+	render: function (characters) {
+		 
+		 var that = this;
+		 var cast = this.collection;
+
+		 _.each(cast.models, function (the_cast) {
+
+		 	var the_cast = the_cast.toJSON();
+
+		 	presence = $.inArray(the_cast.id, characters); //We're checking if the character is already in the cast list => -1 one means not in array
+		 	
+		 	if(presence == -1 ){
+
+		 		var productionCastItem = new App.Views.ProductionCastItem({ model: the_cast});
+		 		var view = productionCastItem.render().el;
+
+		 		that.$el.append(view);
+		 		//console.log(that.$el.html());
+		 	}
+		 
+
+		 });
+
+		 return this;
+
+	},
+
+
+});
+
+App.Views.ProductionCastItem = Backbone.View.extend({
+
+	tagName: 'li',
+	
+	render: function() {
+			var that = this;
+			var template = _.template($('#character-item-template').html());
+			
+
+			var character_id = this.model.id;
+			var the_character = new App.Models.Character;
+			the_character.url = '/SAPI/character/' + character_id;
+			the_character.fetch({
+
+				success: function (character) {
+					
+					var view = template(character.toJSON());
+					that.$el.html(view);
+					console.log(that.el);
+				}
+
+			})
+
+		return this;
+	}
+
+});
+
+App.Collections.ProductionCast = Backbone.Collection.extend({
+
+	//model: 'App.Models.Cast'
+
+});
 
 
 
